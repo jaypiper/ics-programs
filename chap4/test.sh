@@ -1,0 +1,100 @@
+riscv64-linux-gnu-gcc \
+-Wall -Werror -march=rv64g $1.c -o build/$1
+riscv64-linux-gnu-objdump -d build/$1 > build/$1.txt
+
+# riscv64-linux-gnu-gcc -O1 \
+# -fno-auto-inc-dec \
+# -fno-branch-count-reg \
+# -fno-combine-stack-adjustments \
+# -fno-compare-elim \
+# -fno-cprop-registers \
+# -fno-dce \
+# -fno-defer-pop \
+# -fno-delayed-branch \
+# -fno-dse \
+# -fno-forward-propagate \
+# -fno-guess-branch-probability \
+# -fno-if-conversion \
+# -fno-if-conversion2 \
+# -fno-inline-functions-called-once \
+# -fno-ipa-modref \
+# -fno-ipa-profile \
+# -fno-ipa-pure-const \
+# -fno-ipa-reference \
+# -fno-ipa-reference-addressable \
+# -fno-merge-constants \
+# -fno-move-loop-invariants \
+# -fno-omit-frame-pointer \
+# -fno-reorder-blocks \
+# -fno-shrink-wrap \
+# -fno-shrink-wrap-separate \
+# -fno-split-wide-types \
+# -fno-ssa-backprop \
+# -fno-ssa-phiopt \
+# -fno-tree-bit-ccp \
+# -fno-tree-ccp \
+# -fno-tree-ch \
+# -fno-tree-coalesce-vars \
+# -fno-tree-copy-prop \
+# -fno-tree-dce \
+# -fno-tree-dominator-opts \
+# -fno-tree-dse \
+# -fno-tree-forwprop \
+# -fno-tree-fre \
+# -fno-tree-phiprop \
+# -fno-tree-pta \
+# -fno-tree-scev-cprop \
+# -fno-tree-sink \
+# -fno-tree-slsr \
+# -fno-tree-sra \
+# -fno-tree-ter \
+# -fno-unit-at-a-time \
+# -Wall -Werror -march=rv64g $1.c -o build/$1
+# riscv64-linux-gnu-objdump -d build/$1 > build/$1.txt
+
+
+# -fauto-inc-dec  \
+# -fbranch-count-reg  \
+# -fcombine-stack-adjustments  \
+# -fcompare-elim  \
+# -fcprop-registers  \
+# -fdce  \
+# -fdefer-pop  \
+# -fdse  \
+# -fforward-propagate  \
+# -fguess-branch-probability  \
+# -fif-conversion  \
+# -fif-conversion2  \
+# -finline-functions-called-once  \
+# -fipa-modref  \
+# -fipa-profile  \
+# -fipa-pure-const  \
+# -fipa-reference  \
+# -fipa-reference-addressable  \
+# -fmerge-constants  \
+# -fmove-loop-invariants  \
+# -fomit-frame-pointer  \
+# -freorder-blocks  \
+# -fshrink-wrap  \
+# -fshrink-wrap-separate  \
+# -fsplit-wide-types  \
+# -fssa-backprop  \
+# -fssa-phiopt  \
+# -ftree-bit-ccp  \
+# -ftree-ccp  \
+# -ftree-ch  \
+# -ftree-coalesce-vars  \
+# -ftree-copy-prop  \
+# -ftree-dce  \
+# -ftree-dominator-opts  \
+# -ftree-dse  \
+# -ftree-forwprop  \
+# -ftree-fre  \
+# -ftree-phiprop  \
+# -ftree-pta  \
+# -ftree-scev-cprop  \
+# -ftree-sink  \
+# -ftree-slsr  \
+# -ftree-sra  \
+# -ftree-ter  \
+# -funit-at-a-time \
