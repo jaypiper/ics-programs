@@ -1,0 +1,27 @@
+CC = riscv64-linux-gnu-gcc
+CFLAGS = -O1 \
+	-fno-ipa-pure-const  \
+	-fno-inline-functions-called-once \
+	-fno-stack-protector \
+	-Wall -Werror -march=rv64g
+
+DIRS = $(shell ls -l| grep -v build | grep ^d |awk '{print $$9}')
+TARGET_DEST = $(addprefix build/,$(DIRS))
+FILES = $(basename $(notdir $(shell find . -maxdepth 1 -name "*.c")))
+TARGET_FILE = $(addprefix build/,$(FILES))
+TARGET = $(notdir $(shell pwd))
+
+$(shell touch $(DIRS) .)
+
+all: $(TARGET_FILE) $(TARGET_DEST)
+	@echo $(FILES)
+	@echo $(DIRS)
+
+$(TARGET_FILE) : build/%:%.c
+	@mkdir -p build
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(TARGET_DEST) : build/%: %
+	@mkdir -p build
+	@$(CC) $(CFLAGS) $^/*.c -o $@
+
