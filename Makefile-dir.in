@@ -1,0 +1,28 @@
+CC = riscv64-linux-gnu-gcc
+CFLAGS = -O1 \
+	-fno-ipa-pure-const  \
+	-fno-inline-functions-called-once \
+	-fno-stack-protector \
+	-Wall -Werror -march=rv64g
+
+SRCS ?= $(shell ls *.c)
+TARGET ?= abc
+TARGET_DIR ?= build
+
+_S = $(addprefix build/,$(patsubst %.c,%.s,$(SRCS)))
+_O = $(patsubst %.s,%.o,$(_S))
+
+$(TARGET): $(_O)
+	@$(CC) $(CFLAGS) $^ -o $@
+
+%.o: %.s
+	@$(CC) $(CFLAGS) $^ -c -o $@
+
+$(TARGET_DIR)/%.s: %.c
+	@$(CC) $(CFLAGS) $^ -S -o $@
+
+clean:
+	rm -rf build
+
+.PHONY: clean
+.NOTINTERMEDIATE: $(_S)

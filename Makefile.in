@@ -17,11 +17,22 @@ all: $(TARGET_FILE) $(TARGET_DEST)
 	@echo $(FILES)
 	@echo $(DIRS)
 
-$(TARGET_FILE) : build/%:%.c
+$(TARGET_FILE) : %:%.o
 	@mkdir -p build
-	$(CC) $(CFLAGS) $^ -o $@
+	@$(CC) $(CFLAGS) $^ -o $@
+
+%.o: %.s
+	@$(CC) $(CFLAGS) $^ -c -o $@
+
+build/%.s: %.c
+	@mkdir -p build
+	@$(CC) $(CFLAGS) $^ -S -o $@
 
 $(TARGET_DEST) : build/%: %
 	@mkdir -p build
-	@$(CC) $(CFLAGS) $^/*.c -o $@
+	@echo "include ../../Makefile-dir.in" > $^/Makefile
+	@mkdir -p $^/build
+	@make -C $^ TARGET=../$@
+	@rm $^/Makefile
 
+.NOTINTERMEDIATE: $(TARGET_FILE:%=%.s)
