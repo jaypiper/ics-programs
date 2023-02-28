@@ -3,7 +3,7 @@ CFLAGS = -O1 \
 	-fno-ipa-pure-const  \
 	-fno-inline-functions-called-once \
 	-fno-stack-protector \
-	-Wall -Werror -march=rv64g
+	-Wall -Werror -march=rv64g -fcommon -no-pie
 
 SRCS ?= $(shell ls *.c)
 TARGET ?= abc

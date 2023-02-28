@@ -32,7 +32,7 @@ $(TARGET_DEST) : build/%: %
 	@mkdir -p build
 	@echo "include ../../Makefile-dir.in" > $^/Makefile
 	@mkdir -p $^/build
-	@make -C $^ TARGET=../$@
+	-@make -C $^ TARGET=../$@
 	@rm $^/Makefile
 
 .NOTINTERMEDIATE: $(TARGET_FILE:%=%.s)
