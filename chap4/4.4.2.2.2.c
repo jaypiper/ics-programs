@@ -1,9 +1,5 @@
 #include <stdio.h>
-void swap (int x, int y ) {
-	int t=x;
-	x=y;
-	y=t;
-}
+void swap (int x, int y );
 int main ( ) { 
   int a=15, b=22;
   printf ("a=%d\tb=%d\n", a, b);
@@ -12,3 +8,8 @@ int main ( ) {
   return 0;
 }
 
+void swap (int x, int y ) {
+	int t=x;
+	x=y;
+	y=t;
+}
